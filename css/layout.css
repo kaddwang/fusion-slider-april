@@ -8,30 +8,30 @@
 @keyframes hero-gradient-flow {
     0% {
         transform: scale(1) translate3d(0, 0, 0);
-        background-position: 0% 50%, 100% 20%, 50% 100%, 50% 50%;
+        background-position: 0% 42%, 100% 18%, 48% 100%, 50% 50%;
     }
     50% {
-        transform: scale(1.08) translate3d(0, -1.5%, 0);
-        background-position: 100% 40%, 0% 100%, 60% 0%, 50% 50%;
+        transform: scale(1.05) translate3d(0, -1%, 0);
+        background-position: 100% 52%, 0% 88%, 58% 6%, 50% 50%;
     }
     100% {
         transform: scale(1) translate3d(0, 0, 0);
-        background-position: 0% 50%, 100% 20%, 50% 100%, 50% 50%;
+        background-position: 0% 42%, 100% 18%, 48% 100%, 50% 50%;
     }
 }
 
 @keyframes hero-glow-drift {
     0% {
-        transform: translate3d(-2%, 0, 0) scale(1);
-        opacity: 0.55;
+        transform: translate3d(-1.5%, 0, 0) scale(1);
+        opacity: 0.45;
     }
     50% {
-        transform: translate3d(2%, -2%, 0) scale(1.06);
-        opacity: 0.85;
+        transform: translate3d(1.5%, -1.2%, 0) scale(1.03);
+        opacity: 0.65;
     }
     100% {
-        transform: translate3d(-2%, 0, 0) scale(1);
-        opacity: 0.55;
+        transform: translate3d(-1.5%, 0, 0) scale(1);
+        opacity: 0.45;
     }
 }
 
@@ -69,7 +69,7 @@
 .hero-slide {
     isolation: isolate;
     background:
-        linear-gradient(135deg, #06101f 0%, #0b1f3d 34%, #0d2a4c 68%, #0a1830 100%);
+        linear-gradient(135deg, #fffdfa 0%, #fffaf5 42%, #fffdf9 100%);
 }
 
 .hero-slide::before,
@@ -83,23 +83,29 @@
 .hero-slide::before {
     z-index: 0;
     background:
-        radial-gradient(circle at 18% 22%, rgba(78, 140, 255, 0.34), transparent 30%),
-        radial-gradient(circle at 82% 20%, rgba(255, 191, 128, 0.12), transparent 22%),
-        radial-gradient(circle at 50% 78%, rgba(79, 182, 255, 0.22), transparent 34%),
-        radial-gradient(circle at 50% 50%, rgba(7, 34, 79, 0.6), transparent 58%);
-    background-size: 150% 150%, 140% 140%, 170% 170%, 100% 100%;
-    animation: hero-gradient-flow 20s ease-in-out infinite;
-    filter: blur(10px);
+        radial-gradient(ellipse 130% 34% at 78% 76%, rgba(255, 170, 112, 0.18), transparent 56%),
+        linear-gradient(118deg,
+            transparent 0%,
+            transparent 24%,
+            rgba(255, 224, 201, 0.02) 31%,
+            rgba(255, 186, 142, 0.08) 38%,
+            rgba(255, 156, 97, 0.14) 46%,
+            rgba(255, 186, 142, 0.08) 54%,
+            rgba(255, 224, 201, 0.02) 61%,
+            transparent 70%,
+            transparent 100%);
+    background-size: 190% 190%, 230% 230%;
+    animation: hero-gradient-flow 34s ease-in-out infinite;
+    filter: blur(24px);
 }
 
 .hero-slide::after {
     z-index: 1;
     background:
-        radial-gradient(circle at 50% 38%, rgba(130, 191, 255, 0.1), transparent 18%),
-        radial-gradient(circle at 50% 80%, rgba(255, 152, 84, 0.08), transparent 16%),
-        linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0)),
-        radial-gradient(circle at center, transparent 45%, rgba(2, 8, 18, 0.36) 100%);
-    animation: hero-glow-drift 14s ease-in-out infinite;
+        radial-gradient(circle at 22% 24%, rgba(255, 255, 255, 0.96), transparent 32%),
+        radial-gradient(circle at 84% 16%, rgba(255, 248, 241, 0.58), transparent 24%),
+        radial-gradient(circle at center, rgba(255,255,255,0), rgba(255,250,245,0.62) 82%);
+    animation: hero-glow-drift 28s ease-in-out infinite;
 }
 
 .hero-slide .content {

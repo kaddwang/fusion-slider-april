@@ -68,36 +68,36 @@ p {
 
 .hero-slide h1,
 .hero-slide h2 {
-    color: #f5f8ff;
-    background: none;
-    -webkit-background-clip: initial;
-    -webkit-text-fill-color: initial;
-    background-clip: initial;
+    color: #1d1d1f;
+    background: linear-gradient(135deg, #131313 0%, #353535 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .hero-slide .neon-text {
-    color: #f9fbff;
+    color: #171717;
     text-shadow:
-        0 0 30px rgba(120, 176, 255, 0.18),
-        0 10px 30px rgba(0, 0, 0, 0.25);
+        0 0 24px rgba(255, 188, 136, 0.16),
+        0 10px 30px rgba(255, 153, 87, 0.08);
 }
 
 .hero-slide .subtitle {
-    color: #dbe8ff;
+    color: #5f5f64;
     text-transform: none;
     letter-spacing: 0.08em;
 }
 
 .hero-slide .content > p:first-child {
     display: inline-block;
-    color: rgba(255, 248, 240, 0.92);
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.09);
+    color: #8b4a12;
+    background: rgba(255, 247, 239, 0.86);
+    border: 1px solid rgba(255, 170, 120, 0.22);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     padding: 0.55rem 1rem;
     border-radius: 999px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+    box-shadow: 0 10px 30px rgba(255, 153, 87, 0.08);
 }
 
 /* 代碼塊優化 */
