@@ -38,9 +38,9 @@
 
 
         <!-- Page 1: Cover -->
-        <section class="slide active theme-orange">
+        <section class="slide active theme-orange hero-slide">
             <div class="content">
-                <p style="font-size: 1.2rem; margin-bottom: 1rem; opacity: 0.9; font-weight: 600;">【聯合活動】Indie Hackers Taiwan & Useful Vibecode</p>
+                <p style="font-size: 1.2rem; margin-bottom: 1rem; opacity: 0.9; font-weight: 600;">AI 原型開發夜（下）</p>
                 <h1 class="neon-text">想法不靠募資，獨立開發之路</h1>
                 <h2 class="subtitle">成為 Indie Hacker 的作戰系統</h2>
                 <div class="scroll-hint">Scroll to Start ↓</div>
@@ -51,14 +51,13 @@
         <section class="slide theme-orange">
             <div class="content">
                 <h2>今日講師陣容</h2>
-                <p class="subtitle">Indie Hackers Taiwan x Useful</p>
+                <p class="subtitle"> Fusion 創新創業委員會</p>
                 
                 <div class="instructors-container">
                     <div class="instructor">
                         <div class="avatar" style="background-image: url('owen-avatar.png'); background-position: top;"></div>
                         <div class="instructor-name">Owen</div>
                         <div class="instructor-desc">
-                            Indie Hackers Taiwan 共同創辦人<br>
                             前科技業 AI/軟體 工程師/顧問<br>
                             目前旅居泰國數位遊牧
                         </div>
@@ -67,17 +66,8 @@
                         <div class="avatar" style="background-image: url('kade-avatar.png')"></div>
                         <div class="instructor-name">Kade</div>
                         <div class="instructor-desc">
-                            Indie Hackers Taiwan 共同創辦人<br>
-                            Ex- Gogoro Product Designer
-                        </div>
-                    </div>
-                    <div class="instructor">
-                        <div class="avatar" style="background-image: url('noct-avatar.png'); background-position: top;"></div>
-                        <div class="instructor-name">Noct</div>
-                        <div class="instructor-desc">
-                            Useful 創辦人<br>
-                            Landing Page 實戰講師<br>
-                            帶你打造高轉換率網頁
+                            漸強實驗室 Senior Product Ops<br>
+                            Ex-Gogoro Product Designer
                         </div>
                     </div>
                 </div>
@@ -1107,7 +1097,7 @@
                     <div class="step-num">01</div>
                     <div class="step-content">
                         <strong>快速建置 Landing Page</strong>
-                        <p>工具：Figma / Cursor / <a href="https://styleprompt.zeabur.app/S01" style="color:#FF9F43;">StylePrompt</a><br>重點：只需一張產品 P 圖 + 等待名單</p>
+                        <p>工具：Claude / Cursor / Figma<br>重點：只需一張產品 P 圖 + 等待名單</p>
                     </div>
                 </div>
 
@@ -1678,7 +1668,7 @@
     </div>
 </section>
 
-<section class="slide theme-orange landing-slide">
+<section class="slide theme-orange landing-slide" style="display: none;">
     <style>
         /* 整體佈局設定 */
         .landing-slide .content {
@@ -1872,7 +1862,932 @@
     </div>
 </section>
 
+<!-- Page 19: FAQ -->
 <section class="slide theme-orange">
+    <style>
+        .fusion-event-style .content {
+            max-width: 1080px;
+            margin: 0 auto;
+        }
+        .faq-layout {
+            margin-top: 2rem;
+        }
+        .quick-ask-panel,
+        .share-board,
+        .support-card,
+        .cleanup-card,
+        .award-intro-card,
+        .award-detail-card {
+            background: rgba(255,255,255,0.92);
+            border-radius: 20px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+            border: 1px solid rgba(255,255,255,0.7);
+        }
+        .quick-ask-panel {
+            padding: 0;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+        }
+        .quick-ask-chips {
+            position: relative;
+            min-height: 520px;
+        }
+        .quick-chip {
+            position: absolute;
+            background: linear-gradient(135deg, #fff 0%, #fff4ea 100%);
+            border: 1px solid rgba(255, 159, 67, 0.35);
+            border-radius: 22px;
+            padding: 1rem 1.2rem;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #7a4a12;
+            box-shadow: 0 6px 16px rgba(255, 159, 67, 0.12);
+            animation: quickBob 4s ease-in-out infinite;
+            max-width: 290px;
+            line-height: 1.45;
+        }
+        .quick-chip:nth-child(1) { top: 10px; left: 10px; transform: rotate(-7deg); }
+        .quick-chip:nth-child(2) { top: 35px; right: 90px; transform: rotate(6deg); animation-delay: 0.5s; }
+        .quick-chip:nth-child(3) { top: 190px; left: 140px; transform: rotate(-3deg); animation-delay: 1s; }
+        .quick-chip:nth-child(4) { top: 185px; right: 10px; transform: rotate(8deg); animation-delay: 1.5s; }
+        .quick-chip:nth-child(5) { top: 355px; left: 40px; transform: rotate(4deg); animation-delay: 2s; }
+        .quick-chip:nth-child(6) { top: 360px; right: 120px; transform: rotate(-6deg); animation-delay: 2.5s; }
+        .share-layout,
+        .cleanup-layout {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 1.6rem;
+            margin-top: 2rem;
+            align-items: stretch;
+        }
+        .share-board,
+        .support-card,
+        .cleanup-card,
+        .award-intro-card,
+        .award-detail-card {
+            padding: 1.6rem;
+        }
+        .share-prompts,
+        .support-list,
+        .cleanup-list,
+        .award-points {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+        .prompt-card,
+        .support-item,
+        .cleanup-item,
+        .award-point {
+            background: rgba(255,255,255,0.8);
+            border: 1px solid rgba(0,0,0,0.06);
+            border-left: 5px solid var(--accent-orange);
+            border-radius: 14px;
+            padding: 0.95rem 1rem;
+        }
+        .prompt-card strong,
+        .support-item strong,
+        .cleanup-item strong {
+            color: #222;
+        }
+        .share-checklist {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.9rem;
+            margin-top: 1rem;
+        }
+        .check-card {
+            background: linear-gradient(135deg, #2c2c2c 0%, #3f3f3f 100%);
+            color: white;
+            border-radius: 16px;
+            padding: 1rem 1.1rem;
+        }
+        .check-card strong {
+            color: #ffcf99;
+        }
+        .award-stage {
+            margin-top: 2.4rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1.2rem;
+            align-items: end;
+        }
+        .award-podium {
+            position: relative;
+            background: rgba(255,255,255,0.95);
+            border-radius: 22px 22px 10px 10px;
+            text-align: center;
+            padding: 1.2rem 1rem 1.4rem;
+            box-shadow: 0 14px 28px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+        .award-podium::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(255,255,255,0.45), rgba(255,255,255,0));
+            pointer-events: none;
+        }
+        .award-podium.rank-1 { min-height: 360px; border-top: 10px solid #f7b500; }
+        .award-podium.rank-2 { min-height: 300px; border-top: 10px solid #62c0ff; }
+        .award-podium.rank-3 { min-height: 260px; border-top: 10px solid #8f6b4b; }
+        .podium-rank {
+            font-size: 2.4rem;
+            font-weight: 900;
+            margin-bottom: 0.4rem;
+        }
+        .podium-title {
+            font-size: 1.35rem;
+            font-weight: 900;
+            margin-bottom: 0.35rem;
+        }
+        .podium-sub {
+            font-size: 0.92rem;
+            color: #666;
+            margin-bottom: 0.9rem;
+        }
+        .podium-prize {
+            display: inline-block;
+            padding: 0.45rem 0.8rem;
+            border-radius: 999px;
+            font-size: 0.88rem;
+            font-weight: 800;
+            background: #fff4e5;
+            color: #9b5d00;
+        }
+        .award-detail-layout {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 2rem;
+            align-items: center;
+            margin-top: 2rem;
+        }
+        .award-image-wrap {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 420px;
+            border-radius: 26px;
+            background: radial-gradient(circle at center, rgba(255,255,255,0.98) 0%, rgba(255,243,230,0.95) 45%, rgba(255,214,170,0.8) 100%);
+            overflow: hidden;
+        }
+        .award-image-wrap.silver {
+            background: radial-gradient(circle at center, rgba(255,255,255,0.98) 0%, rgba(236,248,255,0.95) 45%, rgba(175,221,255,0.82) 100%);
+        }
+        .award-image-wrap.bronze {
+            background: radial-gradient(circle at center, rgba(255,255,255,0.98) 0%, rgba(249,241,233,0.95) 45%, rgba(205,169,136,0.82) 100%);
+        }
+        .award-image-wrap img {
+            width: 88%;
+            max-width: 380px;
+            object-fit: contain;
+            filter: drop-shadow(0 18px 30px rgba(0,0,0,0.18));
+            position: relative;
+            z-index: 2;
+        }
+        .award-fx {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .award-fx svg {
+            width: 100%;
+            height: 100%;
+        }
+        .award-fx.gold .ray {
+            transform-origin: 50% 50%;
+            animation: goldSpin 18s linear infinite;
+        }
+        .award-fx.gold .spark {
+            animation: sparklePulse 2.4s ease-in-out infinite;
+        }
+        .award-fx.silver .ring {
+            animation: silverWave 3.6s ease-in-out infinite;
+        }
+        .award-fx.silver .ring:nth-child(2) {
+            animation-delay: 1.2s;
+        }
+        .award-fx.silver .ring:nth-child(3) {
+            animation-delay: 2.4s;
+        }
+        .award-fx.bronze .gear {
+            transform-origin: 50% 50%;
+            animation: bronzeRotate 16s linear infinite;
+        }
+        .award-fx.bronze .bolt {
+            animation: bronzePulse 2.2s ease-in-out infinite;
+        }
+        .award-crown {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            padding: 0.45rem 0.8rem;
+            border-radius: 999px;
+            font-weight: 900;
+            font-size: 0.82rem;
+            color: #7c4a00;
+            background: rgba(255,255,255,0.85);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+        }
+        .award-detail-card h2 {
+            margin-bottom: 0.35rem;
+        }
+        .award-kicker {
+            display: inline-block;
+            background: #fff0e0;
+            color: #a35c00;
+            border-radius: 999px;
+            padding: 0.4rem 0.8rem;
+            font-size: 0.85rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        .award-amount {
+            font-size: 2.3rem;
+            font-weight: 900;
+            color: #1d1d1f;
+            margin: 0.2rem 0 1rem;
+        }
+        .award-blessing {
+            margin-top: 1rem;
+            padding: 1rem 1.1rem;
+            border-radius: 14px;
+            background: rgba(255,159,67,0.12);
+            color: #6f430e;
+            font-weight: 700;
+        }
+        .support-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .support-lounge {
+            margin-top: 1.5rem;
+            background: linear-gradient(135deg, #171717 0%, #242424 55%, #2f2f2f 100%);
+            border-radius: 28px;
+            padding: 2rem;
+            box-shadow: 0 18px 36px rgba(0,0,0,0.18);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 420px;
+        }
+        .magic-quote-stage {
+            background: transparent;
+            border-radius: 24px;
+            min-height: 340px;
+            padding: 0;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            perspective: 1200px;
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+        }
+        .magic-quote-stage::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, rgba(255,159,67,0.14), transparent 50%);
+            pointer-events: none;
+        }
+        .magic-label {
+            display: inline-block;
+            padding: 0.35rem 0.75rem;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.1);
+            color: #ffd3a0;
+            font-size: 0.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: 0.04em;
+        }
+        .magic-line-wrap {
+            position: relative;
+            min-height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+        .magic-line {
+            font-size: 2.5rem;
+            font-weight: 900;
+            line-height: 1.35;
+            transform-origin: center center;
+            transition: transform 0.6s ease, opacity 0.6s ease;
+            will-change: transform, opacity;
+            max-width: 760px;
+        }
+        .magic-line.is-changing {
+            opacity: 0;
+            transform: rotateX(90deg) scale(0.92);
+        }
+        .support-card h3,
+        .cleanup-card h3 {
+            margin-bottom: 0.4rem;
+        }
+        .cleanup-layout {
+            margin-top: 1.7rem;
+        }
+        .thankyou-simple {
+            margin-top: 3.5rem;
+            text-align: center;
+        }
+        .thankyou-simple p {
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin: 0.7rem auto;
+            max-width: 760px;
+        }
+        .thankyou-signoff {
+            margin-top: 1.4rem;
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: #1d1d1f;
+        }
+        @keyframes goldSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes sparklePulse {
+            0%, 100% { opacity: 0.35; transform: scale(0.92); }
+            50% { opacity: 1; transform: scale(1.08); }
+        }
+        @keyframes silverWave {
+            0% { opacity: 0.12; transform: scale(0.78); }
+            50% { opacity: 0.55; transform: scale(1); }
+            100% { opacity: 0.12; transform: scale(1.18); }
+        }
+        @keyframes bronzeRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(-360deg); }
+        }
+        @keyframes bronzePulse {
+            0%, 100% { opacity: 0.25; }
+            50% { opacity: 0.9; }
+        }
+        .closing-banner {
+            margin-top: 1.5rem;
+            padding: 1rem 1.2rem;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #1f1f1f 0%, #383838 100%);
+            color: white;
+            text-align: center;
+            font-weight: 800;
+            letter-spacing: 0.02em;
+        }
+        .pitch-timer-shell {
+            margin-top: 1.5rem;
+            background: rgba(255,255,255,0.94);
+            border-radius: 26px;
+            padding: 1.8rem;
+            box-shadow: 0 14px 30px rgba(0,0,0,0.08);
+        }
+        .pitch-timer-hero {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.4rem;
+            align-items: stretch;
+        }
+        .timer-display-card {
+            background: linear-gradient(135deg, #2d2d2d 0%, #464646 100%);
+            color: white;
+            border-radius: 22px;
+            padding: 1.5rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .timer-display-card .mini-label {
+            background: rgba(255,255,255,0.12);
+            color: #ffe1bb;
+            margin: 0 auto 0.9rem;
+        }
+        .timer-clock {
+            font-size: 4.4rem;
+            font-weight: 900;
+            letter-spacing: 0.04em;
+            line-height: 1;
+            margin-bottom: 0.7rem;
+        }
+        .timer-note {
+            color: #d8d8d8;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        .timer-controls {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 0.7rem;
+            flex-wrap: wrap;
+        }
+        .timer-btn {
+            border: none;
+            border-radius: 999px;
+            padding: 0.7rem 1rem;
+            font-size: 0.92rem;
+            font-weight: 800;
+            cursor: pointer;
+        }
+        .timer-btn.primary {
+            background: var(--accent-orange);
+            color: white;
+        }
+        .timer-btn.secondary {
+            background: rgba(255,255,255,0.12);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.18);
+        }
+        .pitch-guidance-card {
+            border-radius: 22px;
+            background: linear-gradient(135deg, #fff9f3 0%, #fff 100%);
+            border: 1px solid rgba(255, 159, 67, 0.18);
+            padding: 1.5rem;
+        }
+        .guidance-badge {
+            display: inline-block;
+            padding: 0.4rem 0.75rem;
+            border-radius: 999px;
+            background: rgba(255,159,67,0.14);
+            color: #9b5d00;
+            font-size: 0.82rem;
+            font-weight: 800;
+            margin-bottom: 0.8rem;
+        }
+        .guidance-current {
+            font-size: 1.9rem;
+            font-weight: 900;
+            color: #1d1d1f;
+            margin-bottom: 0.45rem;
+        }
+        .guidance-desc {
+            color: #666;
+            line-height: 1.6;
+            font-size: 0.98rem;
+        }
+        .pitch-structure {
+            margin-top: 1.2rem;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0.9rem;
+        }
+        .pitch-step {
+            background: #fff;
+            border-radius: 18px;
+            padding: 1rem;
+            border: 1px solid rgba(0,0,0,0.06);
+            border-top: 4px solid rgba(255,159,67,0.22);
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+        }
+        .pitch-step.active {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 18px rgba(255,159,67,0.16);
+            border-top-color: var(--accent-orange);
+        }
+        .pitch-step-time {
+            font-size: 0.76rem;
+            font-weight: 900;
+            color: #b56a00;
+            margin-bottom: 0.55rem;
+            letter-spacing: 0.04em;
+        }
+        .pitch-step-title {
+            font-size: 1rem;
+            font-weight: 800;
+            color: #222;
+            margin-bottom: 0.4rem;
+        }
+        .pitch-step-desc {
+            font-size: 0.86rem;
+            line-height: 1.5;
+            color: #666;
+        }
+        .pitch-footer-tip {
+            margin-top: 1rem;
+            padding: 1rem 1.1rem;
+            border-radius: 16px;
+            background: rgba(255,159,67,0.1);
+            color: #7a4a12;
+            font-weight: 700;
+        }
+        @keyframes quickBob {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+    </style>
+    <div class="chapter-badge">04 FAQ</div>
+    <div class="content fusion-event-style">
+        <h2>FAQ 提問時間</h2>
+
+        <div class="faq-layout">
+            <div class="quick-ask-panel">
+                <div class="quick-ask-chips">
+                    <div class="quick-chip">我現在沒點子，第一步該做什麼？</div>
+                    <div class="quick-chip">要先做產品，還是先做 Landing Page？</div>
+                    <div class="quick-chip">怎麼判斷這個題目值不值得做？</div>
+                    <div class="quick-chip">我不會寫程式，可以先從哪裡開始？</div>
+                    <div class="quick-chip">公開建構要分享什麼內容才有效？</div>
+                    <div class="quick-chip">怎麼讓第一批人願意留下聯絡方式？</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Page 20: OpenClaw Sharing -->
+<section class="slide theme-orange">
+    <div class="chapter-badge">05 學員開發分享</div>
+    <div class="content fusion-event-style">
+        <h2>OpenClaw 學員開發分享時間</h2>
+        <p class="subtitle">7 分鐘電梯簡報：用最短時間講清楚你的點子、問題與下一步</p>
+
+        <div class="pitch-timer-shell">
+            <div class="pitch-timer-hero">
+                <div class="timer-display-card">
+                    <div class="mini-label">7 MIN PITCH TIMER</div>
+                    <div class="timer-clock" id="openclaw-timer-clock">07:00</div>
+                    <div class="timer-note" id="openclaw-timer-note">按下開始後，倒數會同步更新目前建議講到的段落。</div>
+                    <div class="timer-controls">
+                        <button class="timer-btn primary" type="button" id="openclaw-timer-start">開始</button>
+                        <button class="timer-btn secondary" type="button" id="openclaw-timer-pause">暫停</button>
+                        <button class="timer-btn secondary" type="button" id="openclaw-timer-reset">重設</button>
+                    </div>
+                </div>
+
+                <div class="pitch-guidance-card">
+                    <div class="guidance-badge">目前建議講到</div>
+                    <div class="guidance-current" id="openclaw-current-step">你做了什麼</div>
+                </div>
+            </div>
+
+            <div class="pitch-structure" id="openclaw-pitch-structure">
+                <div class="pitch-step active" data-step-index="0">
+                    <div class="pitch-step-time">STEP 1</div>
+                    <div class="pitch-step-title">你做了什麼</div>
+                    <div class="pitch-step-desc">一句話介紹你的原型，先讓大家知道作品是什麼。</div>
+                </div>
+                <div class="pitch-step" data-step-index="1">
+                    <div class="pitch-step-time">STEP 2</div>
+                    <div class="pitch-step-title">解決什麼問題</div>
+                    <div class="pitch-step-desc">講清楚痛點，說明這件事為什麼值得被解。</div>
+                </div>
+                <div class="pitch-step" data-step-index="2">
+                    <div class="pitch-step-time">STEP 3</div>
+                    <div class="pitch-step-title">要給誰用</div>
+                    <div class="pitch-step-desc">指出目標使用者，讓大家知道這不是做給所有人的產品。</div>
+                </div>
+                <div class="pitch-step" data-step-index="3">
+                    <div class="pitch-step-time">STEP 4</div>
+                    <div class="pitch-step-title">你怎麼做出來</div>
+                    <div class="pitch-step-desc">快速帶過 OpenClaw、AI 工具或關鍵做法，不用講太細。</div>
+                </div>
+                <div class="pitch-step" data-step-index="4">
+                    <div class="pitch-step-time">STEP 5</div>
+                    <div class="pitch-step-title">下一步與需要的幫助</div>
+                    <div class="pitch-step-desc">最後講你接下來要驗證什麼，以及希望現場給你什麼回饋。</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    (function () {
+        const totalSeconds = 7 * 60;
+        const steps = [
+            {
+                title: '你做了什麼',
+                until: 60
+            },
+            {
+                title: '解決什麼問題',
+                until: 140
+            },
+            {
+                title: '要給誰用',
+                until: 220
+            },
+            {
+                title: '你怎麼做出來',
+                until: 320
+            },
+            {
+                title: '下一步與需要的幫助',
+                until: totalSeconds
+            }
+        ];
+
+        let remaining = totalSeconds;
+        let timerId = null;
+
+        const clock = document.getElementById('openclaw-timer-clock');
+        const note = document.getElementById('openclaw-timer-note');
+        const currentStep = document.getElementById('openclaw-current-step');
+        const startBtn = document.getElementById('openclaw-timer-start');
+        const pauseBtn = document.getElementById('openclaw-timer-pause');
+        const resetBtn = document.getElementById('openclaw-timer-reset');
+        const stepEls = Array.from(document.querySelectorAll('#openclaw-pitch-structure .pitch-step'));
+
+        if (!clock || !note || !currentStep || !startBtn || !pauseBtn || !resetBtn) {
+            return;
+        }
+
+        const formatTime = (seconds) => {
+            const mins = String(Math.floor(seconds / 60)).padStart(2, '0');
+            const secs = String(seconds % 60).padStart(2, '0');
+            return `${mins}:${secs}`;
+        };
+
+        const getActiveStepIndex = () => {
+            const elapsed = totalSeconds - remaining;
+            return steps.findIndex(step => elapsed < step.until);
+        };
+
+        const renderTimer = () => {
+            clock.textContent = formatTime(remaining);
+
+            const activeIndex = Math.max(0, getActiveStepIndex());
+            const active = steps[activeIndex];
+
+            currentStep.textContent = active.title;
+
+            stepEls.forEach((el, idx) => {
+                el.classList.toggle('active', idx === activeIndex);
+            });
+
+            if (remaining === totalSeconds) {
+                note.textContent = '按下開始後，倒數會同步更新目前建議講到的段落。';
+            } else if (remaining > 0) {
+                note.textContent = `剩下 ${formatTime(remaining)}，現在最適合講「${active.title}」。`;
+            } else {
+                note.textContent = '時間到，請用一句話收尾並邀請大家給你回饋。';
+            }
+        };
+
+        const stopTimer = () => {
+            if (timerId) {
+                clearInterval(timerId);
+                timerId = null;
+            }
+        };
+
+        startBtn.addEventListener('click', () => {
+            if (timerId) return;
+            timerId = setInterval(() => {
+                if (remaining > 0) {
+                    remaining -= 1;
+                    renderTimer();
+                } else {
+                    stopTimer();
+                }
+            }, 1000);
+            renderTimer();
+        });
+
+        pauseBtn.addEventListener('click', () => {
+            stopTimer();
+            note.textContent = `已暫停，剩下 ${formatTime(remaining)}。`;
+        });
+
+        resetBtn.addEventListener('click', () => {
+            stopTimer();
+            remaining = totalSeconds;
+            renderTimer();
+        });
+
+        renderTimer();
+    })();
+</script>
+
+<!-- Page 21: Awards Intro -->
+<section class="slide theme-orange">
+    <div class="chapter-badge">06 活動獎勵</div>
+    <div class="content fusion-event-style">
+        <h2>龍蝦任務頒獎時刻</h2>
+        <p class="subtitle">這場活動延續上半場龍蝦教學，現在正式表揚把準備化成作品、把學習化成行動的學員</p>
+
+        <div class="award-intro-card">
+            <div style="text-align:center;">
+                <div class="award-kicker">Fusion AI 原型開發夜・下半場</div>
+                <div class="award-amount" style="font-size: 2rem;">今晚要頒出的 3 個榮耀獎項</div>
+                <p style="max-width: 760px; margin: 0 auto; color: #555; line-height: 1.6;">
+                    從安裝完成、創意突破，到真正做出可展示的產品，這些獎項代表的不只是完成度，而是你願意把想法往前推進的勇氣。
+                </p>
+            </div>
+
+            <div class="award-stage">
+                <div class="award-podium rank-3">
+                    <div class="podium-rank">3</div>
+                    <div class="podium-title">硬核蝦客</div>
+                    <div class="podium-sub">安裝完成獎</div>
+                    <div class="podium-prize">NTD200</div>
+                </div>
+                <div class="award-podium rank-1">
+                    <div class="podium-rank">1</div>
+                    <div class="podium-title">頂級龍蝦王</div>
+                    <div class="podium-sub">最佳產品獎</div>
+                    <div class="podium-prize">NTD800</div>
+                </div>
+                <div class="award-podium rank-2">
+                    <div class="podium-rank">2</div>
+                    <div class="podium-title">蝦味先鋒</div>
+                    <div class="podium-sub">最佳創意獎</div>
+                    <div class="podium-prize">NTD600</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Page 22: Award Bronze -->
+<section class="slide theme-orange">
+    <div class="chapter-badge">Award 01</div>
+    <div class="content fusion-event-style">
+        <div class="award-detail-layout">
+            <div class="award-image-wrap bronze">
+                <div class="award-fx bronze" aria-hidden="true">
+                    <svg viewBox="0 0 400 400" fill="none">
+                        <g class="gear" opacity="0.5">
+                            <circle cx="200" cy="200" r="120" stroke="#8b5a2b" stroke-width="18" stroke-dasharray="18 12"/>
+                            <circle cx="200" cy="200" r="82" stroke="#c58b57" stroke-width="10" stroke-dasharray="10 10"/>
+                        </g>
+                        <g class="bolt">
+                            <path d="M86 112 L108 98 L122 122 L96 132 Z" fill="#d0a57a"/>
+                            <path d="M310 88 L330 102 L312 126 L292 110 Z" fill="#b97d47"/>
+                            <path d="M286 302 L314 310 L302 336 L276 326 Z" fill="#d0a57a"/>
+                        </g>
+                    </svg>
+                </div>
+                <div class="award-crown">Bronze Medal</div>
+                <img src="award-3rd.png" alt="硬核蝦客獎牌">
+            </div>
+            <div class="award-detail-card">
+                <div class="award-kicker">安裝完成獎</div>
+                <h2>硬核蝦客</h2>
+                <p class="subtitle" style="margin-bottom: 0.5rem;">給完成環境建置、真正踏出第一步的學員</p>
+                <div class="award-amount">NTD 200 等值 token</div>
+                <div class="award-points">
+                    <div class="award-point">恭喜你把環境成功跑起來。</div>
+                    <div class="award-point">這代表你已經正式跨進 AI 原型開發的第一步。</div>
+                    <div class="award-point">把掌聲送給所有完成安裝、願意動手的人。</div>
+                </div>
+                <div class="award-blessing">掌聲送給每一位「先把系統打開、再把未來打開」的硬核蝦客。</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Page 23: Award Silver -->
+<section class="slide theme-orange">
+    <div class="chapter-badge">Award 02</div>
+    <div class="content fusion-event-style">
+        <div class="award-detail-layout">
+            <div class="award-image-wrap silver">
+                <div class="award-fx silver" aria-hidden="true">
+                    <svg viewBox="0 0 400 400" fill="none">
+                        <circle class="ring" cx="200" cy="200" r="78" stroke="#7fcfff" stroke-width="12" opacity="0.45"/>
+                        <circle class="ring" cx="200" cy="200" r="118" stroke="#55b7ff" stroke-width="10" opacity="0.3"/>
+                        <circle class="ring" cx="200" cy="200" r="150" stroke="#b5e5ff" stroke-width="8" opacity="0.22"/>
+                        <path d="M58 230 C116 160, 148 152, 208 170" stroke="#77c9ff" stroke-width="12" stroke-linecap="round" opacity="0.45"/>
+                        <path d="M200 246 C254 264, 292 248, 344 198" stroke="#56aff0" stroke-width="12" stroke-linecap="round" opacity="0.4"/>
+                    </svg>
+                </div>
+                <div class="award-crown">Silver Medal</div>
+                <img src="award-2nd.png" alt="蝦味先鋒獎牌">
+            </div>
+            <div class="award-detail-card">
+                <div class="award-kicker">最佳創意獎</div>
+                <h2>蝦味先鋒</h2>
+                <p class="subtitle" style="margin-bottom: 0.5rem;">獎勵最敢想、最敢轉譯、最敢把創意變成原型的人</p>
+                <div class="award-amount">NTD 600 等值 token</div>
+                <div class="award-points">
+                    <div class="award-point">這個獎送給最有記憶點的點子。</div>
+                    <div class="award-point">你讓大家一看就想知道這個作品還能怎麼發展。</div>
+                    <div class="award-point">謝謝你把創意真的做成可以被看見的原型。</div>
+                </div>
+                <div class="award-blessing">創意永遠是最早被看見、也最容易帶來第一波傳播力的火種。</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Page 24: Award Gold -->
+<section class="slide theme-orange">
+    <div class="chapter-badge">Award 03</div>
+    <div class="content fusion-event-style">
+        <div class="award-detail-layout">
+            <div class="award-image-wrap">
+                <div class="award-fx gold" aria-hidden="true">
+                    <svg viewBox="0 0 400 400" fill="none">
+                        <g class="ray" opacity="0.38">
+                            <path d="M200 36 L214 122 L200 146 L186 122 Z" fill="#f6c24d"/>
+                            <path d="M200 364 L214 278 L200 254 L186 278 Z" fill="#f6c24d"/>
+                            <path d="M36 200 L122 186 L146 200 L122 214 Z" fill="#f6c24d"/>
+                            <path d="M364 200 L278 186 L254 200 L278 214 Z" fill="#f6c24d"/>
+                            <path d="M86 86 L144 136 L150 162 L124 156 Z" fill="#ffd86e"/>
+                            <path d="M314 314 L256 264 L250 238 L276 244 Z" fill="#ffd86e"/>
+                            <path d="M314 86 L256 136 L250 162 L276 156 Z" fill="#ffd86e"/>
+                            <path d="M86 314 L144 264 L150 238 L124 244 Z" fill="#ffd86e"/>
+                        </g>
+                        <g class="spark">
+                            <circle cx="112" cy="110" r="8" fill="#ffdc72"/>
+                            <circle cx="304" cy="98" r="6" fill="#fff0a8"/>
+                            <circle cx="326" cy="286" r="7" fill="#ffdc72"/>
+                            <circle cx="86" cy="300" r="5" fill="#fff0a8"/>
+                        </g>
+                    </svg>
+                </div>
+                <div class="award-crown">Grand Prize</div>
+                <img src="award-1st.png" alt="頂級龍蝦王獎牌">
+            </div>
+            <div class="award-detail-card" style="background: linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(255,246,229,0.98) 100%);">
+                <div class="award-kicker">最佳產品獎</div>
+                <h2>頂級龍蝦王</h2>
+                <p class="subtitle" style="margin-bottom: 0.5rem;">獻給最完整、最有產品感、最讓人想繼續追蹤的作品</p>
+                <div class="award-amount">NTD 800 等值 token</div>
+                <div class="award-points">
+                    <div class="award-point">你的作品最像一個真的產品。</div>
+                    <div class="award-point">不只做得出來，也讓人看見後續發展的可能。</div>
+                    <div class="award-point">今晚的首獎，頒給最完整也最有產品感的你。</div>
+                </div>
+                <div class="award-blessing">請把這份榮耀當成下一次發布的起點，而不是終點。真正的冠軍，是願意持續上線的人。</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Page 25: Support -->
+<section class="slide theme-orange">
+    <div class="chapter-badge">07 學員交流與支援</div>
+    <div class="content fusion-event-style">
+        <h2>學員交流與技術支援</h2>
+        <div class="support-lounge">
+            <div class="magic-quote-stage">
+                <div class="magic-line-wrap">
+                    <div class="magic-line" id="support-magic-line">你原本想用 OpenClaw 做什麼？</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    (function () {
+        const magicLine = document.getElementById('support-magic-line');
+        if (!magicLine) return;
+
+        const phrases = [
+            '你原本想用 OpenClaw 做什麼？',
+            '你遇到的第一個卡點是什麼？',
+            '還沒安裝好 OpenClaw？有什麼需要幫忙的？',
+            '剛剛哪個作品最讓你印象深刻？',
+            '如果明天要再做一版，你最想先改哪裡？',
+            '你最想找誰一起把這個原型推下去？'
+        ];
+
+        let phraseIndex = 0;
+
+        setInterval(() => {
+            magicLine.classList.add('is-changing');
+            setTimeout(() => {
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                magicLine.textContent = phrases[phraseIndex];
+                magicLine.classList.remove('is-changing');
+            }, 320);
+        }, 2600);
+    })();
+</script>
+
+<!-- Page 26: Secretary & Cleanup -->
+<section class="slide theme-orange">
+    <div class="chapter-badge">08 秘書報告與場復</div>
+    <div class="content fusion-event-style">
+        <h2>秘書報告與場復</h2>
+        <div class="thankyou-simple">
+            <p>感謝大家一起完成這場 AI 原型開發夜，也謝謝每一位願意分享、發問、幫助別人的夥伴。</p>
+            <p>離開前記得帶上自己的物品，跟身邊的人說聲謝謝。</p>
+            <div class="thankyou-signoff">創新創業委員會</div>
+        </div>
+    </div>
+</section>
+
+<section class="slide theme-orange" style="display: none;">
     <div class="content">
         <h2>下一步：如何讓產品開始賺錢？</h2>
         <p class="subtitle">Coding 的下一步：關鍵的商業包裝</p>
@@ -1890,7 +2805,7 @@
 </section>
 <!-- === Original Slides Start === -->
 <!-- Page 1: Cover -->
-<section class="slide" data-chapter-start="02">
+<section class="slide" data-chapter-start="02" style="display: none;">
     <div class="content">
         <h1 class="neon-text">設計到上線</h1>
         <h2 class="subtitle">Side project 實戰入門講座</h2>
@@ -1900,7 +2815,7 @@
 </section>
 
 <!-- Page 2: What is Vibe Coding -->
-<section class="slide">
+<section class="slide" style="display: none;">
     <div class="chapter-badge">02 Vibe Coding 與 AI 開發工具</div>
     <div class="content">
         <h2>什麼是 Vibe Coding？</h2>
@@ -1924,7 +2839,7 @@
 
 
 <!-- Page 5: Requirements -->
-<section class="slide">
+<section class="slide" style="display: none;">
     <div class="chapter-badge">02 Vibe Coding 與 AI 開發工具</div>
     <div class="content">
         <h2>課程安裝需求</h2>
@@ -1949,7 +2864,7 @@
 </section>
 
 <!-- Page 6: Node.js Install -->
-<section class="slide">
+<section class="slide" style="display: none;">
     <div class="chapter-badge">02 Vibe Coding 與 AI 開發工具</div>
     <div class="content">
         <h2>Node.js 安裝教學</h2>
@@ -1982,7 +2897,7 @@
 </section>
 
 <!-- Page 6.5: Git Install -->
-<section class="slide">
+<section class="slide" style="display: none;">
     <div class="chapter-badge">02 Vibe Coding 與 AI 開發工具</div>
     <div class="content">
         <h2>Git 安裝教學</h2>
@@ -2012,7 +2927,7 @@
 </section>
 
 <!-- Page 7: Git Commands -->
-<section class="slide">
+<section class="slide" style="display: none;">
     <div class="chapter-badge">02 Vibe Coding 與 AI 開發工具</div>
     <div class="content">
         <h2>Git 常用指令清單</h2>
@@ -2039,7 +2954,7 @@
 </section>
 
 <!-- Page 8: AI Studio Intro -->
-<section class="slide">
+<section class="slide" style="display: none;">
     <div class="chapter-badge">02 Vibe Coding 與 AI 開發工具</div>
     <div class="content" style="display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; height:100%; width:100%;">
         
@@ -2060,7 +2975,7 @@
 </section>
 
 <!-- Page 9: AI Studio x GitHub -->
-<section class="slide">
+<section class="slide" style="display: none;">
     <div class="chapter-badge">02 Vibe Coding 與 AI 開發工具</div>
     <div class="content">
         <h2>AI Studio × GitHub 連接流程</h2>
@@ -2077,7 +2992,7 @@
 </section>
 
 <!-- Page 10: Google Antigravity -->
-<section class="slide">
+<section class="slide" style="display: none;">
     <div class="chapter-badge">02 Vibe Coding 與 AI 開發工具</div>
     <div class="content">
         <h2>Google Antigravity 進階應用</h2>
@@ -2100,7 +3015,7 @@
 </section>
 
 <!-- Page 11: Why Prompts Fail -->
-<section class="slide">
+<section class="slide" style="display: none;">
     <div class="chapter-badge">02 Vibe Coding 與 AI 開發工具</div>
     <div class="content">
         <h2>指示詞為何失準？</h2>
@@ -2123,7 +3038,7 @@
 </section>
 
 <!-- Page 12: Prompt Template -->
-<section class="slide">
+<section class="slide" style="display: none;">
     <div class="chapter-badge">02 Vibe Coding 與 AI 開發工具</div>
     <div class="content">
         <h2>精準指示詞模版</h2>
@@ -2139,7 +3054,7 @@
 </section>
 
 <!-- Page 13: 5 Key Mindsets -->
-<section class="slide">
+<section class="slide" style="display: none;">
     <div class="chapter-badge">02 Vibe Coding 與 AI 開發工具</div>
     <div class="content">
         <h2>精準心法五大重點</h2>
@@ -2153,7 +3068,7 @@
     </div>
 </section>
         <!-- Page 14: Practical 1 Landing Page -->
-        <section class="slide" data-chapter-start="03">
+        <section class="slide" data-chapter-start="03" style="display: none;">
             <div class="chapter-badge">03 實戰：Landing Page 快速搭建</div>
             <div class="content">
                 <h2>實戰 1：Landing Page 串接 Supabase</h2>
@@ -2175,7 +3090,7 @@
         </section>
 
         <!-- Page 15: Code Example -->
-        <section class="slide">
+        <section class="slide" style="display: none;">
             <div class="chapter-badge">03 實戰：Landing Page 快速搭建</div>
             <div class="content">
                 <h2>表單串接 Supabase 範例</h2>

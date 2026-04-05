@@ -66,6 +66,40 @@ p {
     opacity: 0.9;
 }
 
+.hero-slide h1,
+.hero-slide h2 {
+    color: #f5f8ff;
+    background: none;
+    -webkit-background-clip: initial;
+    -webkit-text-fill-color: initial;
+    background-clip: initial;
+}
+
+.hero-slide .neon-text {
+    color: #f9fbff;
+    text-shadow:
+        0 0 30px rgba(120, 176, 255, 0.18),
+        0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.hero-slide .subtitle {
+    color: #dbe8ff;
+    text-transform: none;
+    letter-spacing: 0.08em;
+}
+
+.hero-slide .content > p:first-child {
+    display: inline-block;
+    color: rgba(255, 248, 240, 0.92);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 0.55rem 1rem;
+    border-radius: 999px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+}
+
 /* 代碼塊優化 */
 code {
     font-family: 'JetBrains Mono', 'Fira Code', monospace;

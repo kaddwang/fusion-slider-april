@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Configuration
-    const ENABLE_PASSWORD_LOCK = true; // Set to true to enable password protection
+    const ENABLE_PASSWORD_LOCK = false; // Toggle back to true when password protection is needed
 
     // Password Protection
     const passwordOverlay = document.getElementById('password-overlay');

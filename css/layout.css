@@ -5,6 +5,36 @@
     100% { background-position: 0% 50%; }
 }
 
+@keyframes hero-gradient-flow {
+    0% {
+        transform: scale(1) translate3d(0, 0, 0);
+        background-position: 0% 50%, 100% 20%, 50% 100%, 50% 50%;
+    }
+    50% {
+        transform: scale(1.08) translate3d(0, -1.5%, 0);
+        background-position: 100% 40%, 0% 100%, 60% 0%, 50% 50%;
+    }
+    100% {
+        transform: scale(1) translate3d(0, 0, 0);
+        background-position: 0% 50%, 100% 20%, 50% 100%, 50% 50%;
+    }
+}
+
+@keyframes hero-glow-drift {
+    0% {
+        transform: translate3d(-2%, 0, 0) scale(1);
+        opacity: 0.55;
+    }
+    50% {
+        transform: translate3d(2%, -2%, 0) scale(1.06);
+        opacity: 0.85;
+    }
+    100% {
+        transform: translate3d(-2%, 0, 0) scale(1);
+        opacity: 0.55;
+    }
+}
+
 /* Scroll Container */
 #slides-container {
     height: 100vh;
@@ -34,6 +64,47 @@
     position: relative;
     padding: 2rem;
     overflow: hidden;
+}
+
+.hero-slide {
+    isolation: isolate;
+    background:
+        linear-gradient(135deg, #06101f 0%, #0b1f3d 34%, #0d2a4c 68%, #0a1830 100%);
+}
+
+.hero-slide::before,
+.hero-slide::after {
+    content: '';
+    position: absolute;
+    inset: -8%;
+    pointer-events: none;
+}
+
+.hero-slide::before {
+    z-index: 0;
+    background:
+        radial-gradient(circle at 18% 22%, rgba(78, 140, 255, 0.34), transparent 30%),
+        radial-gradient(circle at 82% 20%, rgba(255, 191, 128, 0.12), transparent 22%),
+        radial-gradient(circle at 50% 78%, rgba(79, 182, 255, 0.22), transparent 34%),
+        radial-gradient(circle at 50% 50%, rgba(7, 34, 79, 0.6), transparent 58%);
+    background-size: 150% 150%, 140% 140%, 170% 170%, 100% 100%;
+    animation: hero-gradient-flow 20s ease-in-out infinite;
+    filter: blur(10px);
+}
+
+.hero-slide::after {
+    z-index: 1;
+    background:
+        radial-gradient(circle at 50% 38%, rgba(130, 191, 255, 0.1), transparent 18%),
+        radial-gradient(circle at 50% 80%, rgba(255, 152, 84, 0.08), transparent 16%),
+        linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0)),
+        radial-gradient(circle at center, transparent 45%, rgba(2, 8, 18, 0.36) 100%);
+    animation: hero-glow-drift 14s ease-in-out infinite;
+}
+
+.hero-slide .content {
+    position: relative;
+    z-index: 2;
 }
 
 /* Content Styling */
