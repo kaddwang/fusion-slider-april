@@ -1,0 +1,55 @@
+        <!-- Page 14: Practical 1 Landing Page -->
+        <section class="slide">
+            <div class="chapter-badge">03 實戰：Landing Page 快速搭建</div>
+            <div class="content">
+                <h2>實戰 1：Landing Page 串接 Supabase</h2>
+                <div class="flow-chart">
+                    <div class="step">設計 UI (HTML/CSS)</div>
+                    <div class="arrow">➔</div>
+                    <div class="step">建立 Supabase Project</div>
+                    <div class="arrow">➔</div>
+                    <div class="step">設定 MCP Server</div>
+                    <div class="arrow">➔</div>
+                    <div class="step">串接資料庫 (Insert)</div>
+                </div>
+                <p class="note">目標：收集使用者 Email 的預約名單頁面。</p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="https://styleprompt.zeabur.app/" target="_blank" class="resource-link" style="background: var(--accent-orange); color: white; border: none; justify-content: center; min-width: 240px;">StylePrompt</a>
+                    <a href="https://askbox.zeabur.app/" target="_blank" class="resource-link" style="background: white; color: #111; border: 1px solid rgba(0,0,0,0.1); justify-content: center; min-width: 240px;">Q&A 提問區</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Page 15: Code Example -->
+        <section class="slide">
+            <div class="chapter-badge">03 實戰：Landing Page 快速搭建</div>
+            <div class="content">
+                <h2>表單串接 Supabase 範例</h2>
+                <div class="code-block js-code">
+                    <pre><code class="language-javascript">
+// 初始化 Supabase Client
+const supabaseUrl = 'YOUR_SUPABASE_URL';
+const supabaseKey = 'YOUR_ANON_KEY';
+const supabase = createClient(supabaseUrl, supabaseKey);
+
+// 監聽表單提交
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('email').value;
+
+    // 寫入資料庫
+    const { data, error } = await supabase
+        .from('subscribers')
+        .insert([ { email: email } ]);
+
+    if (error) console.error('Error:', error);
+    else alert('預約成功！');
+});
+</code></pre>
+                </div>
+            </div>
+        </section>
+
+
+
+

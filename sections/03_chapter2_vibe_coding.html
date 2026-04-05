@@ -1,0 +1,264 @@
+<!-- === Original Slides Start === -->
+<!-- Page 1: Cover -->
+<section class="slide">
+    <div class="content">
+        <h1 class="neon-text">設計到上線</h1>
+        <h2 class="subtitle">Side project 實戰入門講座</h2>
+        <p class="author">打造你的第一個 AI 原生應用</p>
+        <div class="scroll-hint">Scroll to Start ↓</div>
+    </div>
+</section>
+
+<!-- Page 2: What is Vibe Coding -->
+<section class="slide">
+    <div class="chapter-badge">02 Vibe Coding 與 AI 開發工具</div>
+    <div class="content">
+        <h2>什麼是 Vibe Coding？</h2>
+        <div class="card-grid">
+            <div class="card">
+                <h3>定義</h3>
+                <p>Coding with Vibe. 在 AI 協作下進入心流狀態，專注於創意與邏輯，而非語法細節。</p>
+            </div>
+            <div class="card">
+                <h3>特性</h3>
+                <p>自然語言編程、快速迭代、人機一體。</p>
+            </div>
+            <div class="card">
+                <h3>流程</h3>
+                <p>Idea ➔ Prompt ➔ Code ➔ Deploy</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Page 5: Requirements -->
+<section class="slide">
+    <div class="chapter-badge">02 Vibe Coding 與 AI 開發工具</div>
+    <div class="content">
+        <h2>課程安裝需求</h2>
+        <div class="icon-row">
+            <div class="icon-box">
+                <span class="icon">🐱</span>
+                <h3>GitHub Account</h3>
+                <p>程式碼託管與版本控制</p>
+            </div>
+            <div class="icon-box">
+                <span class="icon">🔧</span>
+                <h3>Git CLI</h3>
+                <p>本地端版本控制工具</p>
+            </div>
+            <div class="icon-box">
+                <span class="icon">🟢</span>
+                <h3>Node.js</h3>
+                <p>JavaScript 執行環境 (LTS 版本)</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Page 6: Node.js Install -->
+<section class="slide">
+    <div class="chapter-badge">02 Vibe Coding 與 AI 開發工具</div>
+    <div class="content">
+        <h2>Node.js 安裝教學</h2>
+        <div class="card-grid">
+            <div class="card">
+                <h3>🪟 Windows</h3>
+                <ul class="step-list">
+                    <li>前往 <a href="https://nodejs.org/" target="_blank">nodejs.org</a> 下載 <strong>LTS</strong> 版本</li>
+                    <li>執行 <code>.msi</code> 安裝檔，一路點擊 Next</li>
+                    <li>開啟 <strong>PowerShell</strong> 驗證安裝</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>🍎 macOS</h3>
+                <ul class="step-list">
+                    <li>前往 <a href="https://nodejs.org/" target="_blank">nodejs.org</a> 下載 <strong>LTS</strong> 版本</li>
+                    <li>執行 <code>.pkg</code> 安裝檔，完成安裝</li>
+                    <li>開啟 <strong>Terminal</strong> 驗證安裝</li>
+                </ul>
+            </div>
+        </div>
+        <div class="code-block" style="margin-top: 2rem;">
+            <code>node -v</code>
+            <span class="comment"># 應顯示 v18.x.x 或 v20.x.x</span>
+            <br>
+            <code>npm -v</code>
+            <span class="comment"># 應顯示套件管理工具版本</span>
+        </div>
+    </div>
+</section>
+
+<!-- Page 6.5: Git Install -->
+<section class="slide">
+    <div class="chapter-badge">02 Vibe Coding 與 AI 開發工具</div>
+    <div class="content">
+        <h2>Git 安裝教學</h2>
+        <div class="card-grid">
+            <div class="card">
+                <h3>🪟 Windows</h3>
+                <ul class="step-list">
+                    <li>前往 <a href="https://git-scm.com/" target="_blank">git-scm.com</a> 下載安裝檔</li>
+                    <li>安裝時建議維持預設選項，一路點擊 Next</li>
+                    <li>開啟 <strong>PowerShell</strong> 驗證安裝</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>🍎 macOS</h3>
+                <ul class="step-list">
+                    <li>開啟 Terminal 輸入 <code>git --version</code></li>
+                    <li>若未安裝，系統會提示安裝 <strong>Command Line Tools</strong></li>
+                    <li>點擊「安裝」即可完成，或使用 <code>brew install git</code></li>
+                </ul>
+            </div>
+        </div>
+        <div class="code-block" style="margin-top: 2rem;">
+            <code>git --version</code>
+            <span class="comment"># 應顯示 git version 2.x.x</span>
+        </div>
+    </div>
+</section>
+
+<!-- Page 7: Git Commands -->
+<section class="slide">
+    <div class="chapter-badge">02 Vibe Coding 與 AI 開發工具</div>
+    <div class="content">
+        <h2>Git 常用指令清單</h2>
+        <p>僅限基礎必備，無需死記硬背</p>
+        <div class="code-grid">
+            <div class="code-item">
+                <code>git init</code>
+                <p>初始化專案</p>
+            </div>
+            <div class="code-item">
+                <code>git add .</code>
+                <p>加入所有變更</p>
+            </div>
+            <div class="code-item">
+                <code>git commit -m "msg"</code>
+                <p>提交版本 (msg = 訊息)</p>
+            </div>
+            <div class="code-item">
+                <code>git push</code>
+                <p>推送到遠端 (GitHub)</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Page 8: AI Studio Intro -->
+<section class="slide">
+    <div class="chapter-badge">02 Vibe Coding 與 AI 開發工具</div>
+    <div class="content" style="display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; height:100%; width:100%;">
+        
+        <h2>AI Studio 介紹</h2>
+        
+        <div style="max-width:720px;">
+            <h3>Google 的強大原型工具</h3>
+            <p>AI Studio 提供 Gemini Pro/Flash 等最新模型的 API 存取與測試環境。</p>
+            
+            <ul style="list-style-position: inside; padding: 0; margin-top: 20px;">
+                <li>快速驗證 Prompt 效果</li>
+                <li>免費層級 (Free Tier) 額度大方</li>
+                <li>支援多模態 (文字、圖片、影片輸入)</li>
+            </ul>
+        </div>
+
+    </div>
+</section>
+
+<!-- Page 9: AI Studio x GitHub -->
+<section class="slide">
+    <div class="chapter-badge">02 Vibe Coding 與 AI 開發工具</div>
+    <div class="content">
+        <h2>AI Studio × GitHub 連接流程</h2>
+        <ol class="step-list">
+            <li>進入 AI Studio 左側選單，點擊 <strong>Settings</strong> 或 <strong>Connect</strong>。</li>
+            <li>授權連接 GitHub 帳號。</li>
+            <li>選擇目標 Repository (儲存庫)。</li>
+            <li>直接在 AI Studio 介面中編輯程式碼並 Commit 到 GitHub。</li>
+        </ol>
+        <div class="highlight-box">
+            💡 這是實現「雲端開發、無縫同步」的關鍵步驟。
+        </div>
+    </div>
+</section>
+
+<!-- Page 10: Google Antigravity -->
+<section class="slide">
+    <div class="chapter-badge">02 Vibe Coding 與 AI 開發工具</div>
+    <div class="content">
+        <h2>Google Antigravity 進階應用</h2>
+        <p class="tagline">不僅僅是聊天機器人，而是你的結對工程師</p>
+        <div class="feature-list">
+            <div class="feature">
+                <h3>全專案感知</h3>
+                <p>讀取整個資料夾結構，理解上下文。</p>
+            </div>
+            <div class="feature">
+                <h3>主動執行</h3>
+                <p>可以執行終端機指令、建立檔案、修改程式碼。</p>
+            </div>
+            <div class="feature">
+                <h3>多步驟推理</h3>
+                <p>規劃 (Planning) ➔ 執行 (Execution) ➔ 驗證 (Verification)。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Page 11: Why Prompts Fail -->
+<section class="slide">
+    <div class="chapter-badge">02 Vibe Coding 與 AI 開發工具</div>
+    <div class="content">
+        <h2>指示詞為何失準？</h2>
+        <h3 class="error-title">常見錯誤原因</h3>
+        <div class="error-grid">
+            <div class="error-card">
+                <h4>❌ 缺乏背景</h4>
+                <p>「幫我寫個網頁。」(什麼網頁？給誰看？)</p>
+            </div>
+            <div class="error-card">
+                <h4>❌ 假設 AI 有常識</h4>
+                <p>「要做得好用一點。」(好用的定義因人而異)</p>
+            </div>
+            <div class="error-card">
+                <h4>❌ 步驟混亂</h4>
+                <p>一次要求太多功能，導致 AI 顧此失彼。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Page 12: Prompt Template -->
+<section class="slide">
+    <div class="chapter-badge">02 Vibe Coding 與 AI 開發工具</div>
+    <div class="content">
+        <h2>精準指示詞模版</h2>
+        <p class="camera-hint">📸 建議拍照存擋</p>
+        <div class="template-box">
+            <p><strong>角色 (Role):</strong> 你是資深前端工程師...</p>
+            <p><strong>背景 (Context):</strong> 我們正在開發一個 To-Do List...</p>
+            <p><strong>任務 (Task):</strong> 請實作「刪除事項」功能...</p>
+            <p><strong>限制 (Constraints):</strong> 使用 Vanilla JS，不准用 jQuery...</p>
+            <p><strong>輸出 (Output):</strong> 請提供完整的 index.html 與 script.js...</p>
+        </div>
+    </div>
+</section>
+
+<!-- Page 13: 5 Key Mindsets -->
+<section class="slide">
+    <div class="chapter-badge">02 Vibe Coding 與 AI 開發工具</div>
+    <div class="content">
+        <h2>精準心法五大重點</h2>
+        <ul class="mindset-list">
+            <li><strong>1. 限制技術棧：</strong>明確指定 (如：Tailwind + React)。</li>
+            <li><strong>2. 檔案結構優先：</strong>先定義資料夾結構，再寫程式碼。</li>
+            <li><strong>3. 小步迭代：</strong>一次只做一個功能 (One feature at a time)。</li>
+            <li><strong>4. Review Code：</strong>不要盲目複製，檢查 AI 的邏輯。</li>
+            <li><strong>5. Don't fight the AI：</strong>如果 AI 卡住，換個問法或開新對話。</li>
+        </ul>
+    </div>
+</section>

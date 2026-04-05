@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>設計到上線: Side project 實戰入門講座</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Highlight.js CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+TC:wght@400;700;900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Password Overlay -->
+    <div id="password-overlay">
+        <div class="password-container">
+            <h3>請輸入密碼</h3>
+            <p>請詢問講師獲取密碼</p>
+            <input type="password" id="passwordInput" placeholder="在此輸入密碼" maxlength="4">
+            <button id="submitPassword">進入</button>
+            <p id="errorMessage" style="color: red; display: none; margin-top: 10px;">密碼錯誤</p>
+        </div>
+    </div>
+
+    <div class="page-indicator" id="pageIndicator">1 / --</div>
+
+    <nav class="nav-controls">
+        <button id="prevBtn" aria-label="Previous Slide">▲</button>
+        <button id="nextBtn" aria-label="Next Slide">▼</button>
+    </nav>
+
+    <main id="slides-container">
+

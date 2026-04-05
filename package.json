@@ -1,0 +1,11 @@
+{
+  "name": "slider-local-server",
+  "version": "1.0.0",
+  "description": "Tiny local static server for the slider project",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "MIT"
+}
