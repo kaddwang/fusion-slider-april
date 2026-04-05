@@ -69,7 +69,7 @@
 .hero-slide {
     isolation: isolate;
     background:
-        linear-gradient(135deg, #fffdfa 0%, #fffaf5 42%, #fffdf9 100%);
+        linear-gradient(135deg, #fffdf9 0%, #fbf6ef 48%, #fffaf4 100%);
 }
 
 .hero-slide::before,
@@ -83,29 +83,39 @@
 .hero-slide::before {
     z-index: 0;
     background:
-        radial-gradient(ellipse 130% 34% at 78% 76%, rgba(255, 170, 112, 0.18), transparent 56%),
-        linear-gradient(118deg,
+        radial-gradient(ellipse 155% 40% at 82% 78%, rgba(255, 160, 92, 0.22), transparent 54%),
+        linear-gradient(116deg,
             transparent 0%,
-            transparent 24%,
-            rgba(255, 224, 201, 0.02) 31%,
-            rgba(255, 186, 142, 0.08) 38%,
-            rgba(255, 156, 97, 0.14) 46%,
-            rgba(255, 186, 142, 0.08) 54%,
-            rgba(255, 224, 201, 0.02) 61%,
-            transparent 70%,
+            transparent 18%,
+            rgba(255, 234, 219, 0.03) 26%,
+            rgba(255, 202, 171, 0.08) 33%,
+            rgba(255, 164, 110, 0.16) 41%,
+            rgba(255, 144, 82, 0.26) 48%,
+            rgba(255, 164, 110, 0.16) 56%,
+            rgba(255, 202, 171, 0.08) 64%,
+            rgba(255, 234, 219, 0.03) 71%,
+            transparent 80%,
             transparent 100%);
-    background-size: 190% 190%, 230% 230%;
-    animation: hero-gradient-flow 34s ease-in-out infinite;
-    filter: blur(24px);
+    background-size: 210% 210%, 250% 250%;
+    animation: hero-gradient-flow 38s ease-in-out infinite;
+    filter: blur(20px) saturate(104%);
 }
 
 .hero-slide::after {
     z-index: 1;
     background:
-        radial-gradient(circle at 22% 24%, rgba(255, 255, 255, 0.96), transparent 32%),
-        radial-gradient(circle at 84% 16%, rgba(255, 248, 241, 0.58), transparent 24%),
-        radial-gradient(circle at center, rgba(255,255,255,0), rgba(255,250,245,0.62) 82%);
-    animation: hero-glow-drift 28s ease-in-out infinite;
+        radial-gradient(circle at 24% 22%, rgba(255, 255, 255, 0.94), transparent 28%),
+        radial-gradient(ellipse 120% 36% at 70% 68%, rgba(160, 103, 51, 0.08), transparent 58%),
+        linear-gradient(108deg,
+            transparent 0%,
+            transparent 28%,
+            rgba(255,255,255,0.12) 38%,
+            rgba(255,255,255,0.04) 48%,
+            transparent 60%,
+            transparent 100%),
+        radial-gradient(circle at center, rgba(255,255,255,0), rgba(255,248,241,0.58) 84%);
+    animation: hero-glow-drift 32s ease-in-out infinite;
+    mix-blend-mode: multiply;
 }
 
 .hero-slide .content {
